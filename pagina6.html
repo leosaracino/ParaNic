@@ -22,11 +22,11 @@
         /* Estilos para o conteúdo do modal */
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto; /* Centraliza o modal verticalmente */
+            margin: 5% auto; /* Centraliza o modal verticalmente */
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Define a largura do modal */
-            max-width: 400px; /* Limita a largura do modal para uma visualização adequada em dispositivos móveis */
+            width: 90%; /* Define a largura do modal */
+            max-width: 800px; /* Limita a largura do modal */
         }
 
         /* Estilos para o botão "Fechar" */
@@ -63,6 +63,12 @@
             height: auto; /* Garante que a proporção da imagem ou vídeo seja mantida */
             display: block; /* Remove a margem inferior extra em elementos inline */
             margin: 10px auto; /* Centraliza a mídia horizontalmente */
+        }
+
+        /* Estilos específicos para o vídeo */
+        video {
+            width: 100%;
+            max-width: 100%;
         }
     </style>
 </head>
@@ -132,8 +138,7 @@
         var closeButtons = document.getElementsByClassName('close');
         for (var i = 0; i < closeButtons.length; i++) {
             closeButtons[i].addEventListener('click', function() {
-                var modal = this.parentElement.parentElement;
-                modal.style.display = "none";
+                closeModal(); // Chama a função para fechar todos os modais
             });
         }
 
@@ -142,7 +147,7 @@
             var modals = document.getElementsByClassName('modal');
             for (var i = 0; i < modals.length; i++) {
                 if (event.target == modals[i]) {
-                    modals[i].style.display = "none";
+                    closeModal(); // Chama a função para fechar todos os modais
                 }
             }
         });
