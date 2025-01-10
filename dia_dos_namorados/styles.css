@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffe6e6; /* Cor de fundo suave */
+}
+
+.container {
+    text-align: center;
+    padding-top: 50px; /* Espaçamento no topo */
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question h1 {
+    font-size: 24px;
+}
+
+.options {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.photos {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Grade de 3 colunas */
+    gap: 20px; /* Espaçamento entre as fotos */
+}
+
+.photos img {
+    width: 100%; /* As fotos ocupam toda a largura da coluna */
+    border-radius: 10px; /* Cantos arredondados nas fotos */
+}
+
+/* Estilos para a citação */
+.quote {
+    margin-top: 50px; /* Espaçamento entre as fotos e a citação */
+}
+
+.quote p {
+    font-size: 20px;
+    color: #333; /* Cor do texto */
+    font-style: italic;
+}

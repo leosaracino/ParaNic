@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A nossa história</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #72ca95;
+      text-align: center;
+      padding: 20px;
+      color: #2E2E2E;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .text-section {
+      margin: 30px auto;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+      text-align: justify;
+    }
+
+    .photo-section {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .photo-section img {
+      max-width: 45%;
+      height: auto;
+      border-radius: 10px;
+      border: 3px solid #D2B48C;
+    }
+
+    .next-button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      background-color: #FF6F61;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 20px;
+      text-decoration: none;
+      position: relative; /* Posiciona o botão em relação ao seu contêiner */
+    }
+
+    .next-button:hover {
+      background-color: #E65A50;
+    }
+
+    .next-button-container {
+      margin-top: 20px;
+      text-align: center; /* Centralizando o botão */
+      position: relative; /* Adiciona posição relativa ao contêiner do botão */
+    }
+
+    /* Animação para o GIF andar sobre a borda superior do botão */
+    .gif-section {
+      position: absolute;
+      top: -30px; /* Coloca o GIF acima do botão */
+      left: 10px; /* Ajuste a posição à esquerda do botão */
+      width: 50px; /* Ajuste o tamanho do GIF */
+      z-index: 0; /* Coloca o GIF atrás do texto "Muito obrigado!" */
+      animation: walk-animation 8s linear infinite; /* Define a animação de caminhada em 1 segundo */
+    }
+
+    /* Animação do personagem andando de um lado para o outro */
+    @keyframes walk-animation {
+      0% {
+        left: -60px; /* Inicia fora da tela, à esquerda */
+      }
+      50% {
+        left: calc(100% - 60px); /* Move até o lado direito do botão */
+      }
+      100% {
+        left: -60px; /* Volta para a posição inicial à esquerda */
+      }
+    }
+
+    /* Ajuste no "Muito obrigado!" para garantir que o texto esteja acima do GIF */
+    .thank-you-text {
+      position: relative;
+      z-index: 10; /* Certifique-se de que o texto "Muito obrigado!" fique na frente */
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      animation: pulse-red 1.5s infinite alternate;
+    }
+
+/* Animação de pulsação em vermelho */
+@keyframes pulse-red {
+  0% {
+    color: rgb(255, 0, 0);
+    transform: scale(1);
+  }
+  50% {
+    color: rgb(255, 0, 0);
+    transform: scale(1.2);
+  }
+  100% {
+    color: rgb(255, 0, 0);
+    transform: scale(1);
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>E eu te amo com todas as minhas forças</h1>
+    
+    <div class="text-section">
+      <p>Eu sei que um ano é muito tempo — exatamente 367 dias desde que te pedi em namoro, naquela tarde de sábado, assistindo meu amigo Totoro no sofá da sua casa. E, olhando para trás, vejo como essa jornada não foi fácil. Passar tanto tempo ao lado de alguém não é simples. Vivemos tantos momentos felizes, de alegria e amor, mas também enfrentamos desafios. Tivemos discussões, brigas bobas, mas fico imensamente feliz que nunca foi além disso. Eram apenas desentendimentos passageiros. Sempre nos entendemos, sempre nos amamos, e isso nunca mudou. Isso nunca afetou nosso relacionamento, e saber disso me faz muito feliz.
+
+        Eu nunca tive dúvida, receio ou a menor vontade de estar longe de você. Você mexe comigo de uma forma que ninguém mais mexe. Você é diferente, você é única na minha vida. Você faz por mim o que eu nunca imaginei sentir por ninguém. Você toca minha cabeça, meu coração e minha alma. Hoje, eu vivo por você, para você e, acima de tudo, com você. E isso me faz o homem mais feliz deste mundo, o homem mais sortudo, o mais bem-sucedido e o mais afortunado, porque tenho o maior tesouro da minha vida ao meu lado: você. Sua companhia, sua presença, seu amor.
+        
+        Por tudo isso, eu só tenho uma palavra a dizer: </p>
+    </div>
+    <div class="thank-you-text">Muito obrigado!</div>
+    
+    <!-- Seção com duas fotos lado a lado -->
+    <div class="photo-section">
+      <img src="Fotos/91D659DB-E98D-4DCF-BE50-BFE7C5EDF9F3.JPG" alt="Primeira Foto">
+      <img src="Fotos/56D7D62F-528E-4BF4-9B8D-C80F88E47442.JPG" alt="Segunda Foto">
+    </div>
+
+    <!-- Seção do GIF sobre o botão -->
+    <div class="next-button-container">
+      <a class="next-button" href="pagina3.html">
+        Próxima Página
+      </a>
+      <div class="gif-section">
+        <img src="Fotos/4d11a4ffaedf868588f96c34d74141f9.gif" alt="Gif especial">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

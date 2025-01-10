@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A nossa história</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #72ca95;
+      text-align: center;
+      padding: 20px;
+      color: #2E2E2E;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+    .photo-section img {
+      max-width: 45%;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      border: 3px solid #D2B48C;
+    }
+    .text-section {
+      margin: 30px auto;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+      text-align: justify;
+    }
+
+    .video-container {
+      margin: 30px auto;
+      max-width: 800px;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 400px; /* Definindo uma altura fixa para os vídeos */
+      border-radius: 10px;
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .button-container a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #D2B48C;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-container a:hover {
+      background-color: #C3A375;
+    }
+
+    .next-button {
+      margin-top: 30px;
+      padding: 10px 30px; /* Diminuindo o tamanho do padding */
+      background-color: #FF6F61;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px; /* Diminuindo o tamanho da fonte */
+      text-decoration: none;
+    }
+
+    .next-button:hover {
+      background-color: #E65A50;
+    }
+
+    .mysterious-box {
+      position: relative;
+      display: inline-block;
+      width: 80%;
+      max-width: 600px;
+      height: 200px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 30px;
+    }
+
+    .censored-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      color: transparent;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .censored-text span {
+      color: white;
+      font-size: 20px;
+    }
+
+    .revealed-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: #333;
+      font-size: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .mysterious-box.revealed .censored-text {
+      background-color: transparent;
+      color: transparent;
+    }
+
+    .mysterious-box.revealed .revealed-text {
+      opacity: 1;
+    }
+
+    .next-button-container {
+      margin-top: 20px;
+      text-align: center; /* Centralizando o botão */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>E são momentos como esse que quero reviver</h1>
+    <div class="text-section">
+      <p>Meu amor, eu nem sei como descrever o que sinto por você. Nosso amor é leve, simples, solto, divertido, e eu nunca me diverti tanto na minha vida. Só quero viver mais momentos felizes e cheios de alegria ao seu lado.</p>
+    </div>
+    
+    <div class="photo-section">
+      <img src="Fotos/Imagem do WhatsApp de 2025-01-10 à(s) 19.46.28_5ba91199.jpg" alt="Primeira Foto">
+    </div>
+    <div class="text-section">
+      <p>E mais esses momentos incríveis de alegria:</p>
+    </div>
+    <video controls>
+      <source src="Fotos/Video_pagina2.mp4" type="video/mp4" style="width: 30%">
+      Seu navegador não suporta a tag de vídeo.
+    </video>
+
+    <div class="text-section">
+      <p>Eu quero viver momentos de alegria e tristeza, quero sorrir ao seu lado, e que, se for sofrer, quero sofrer ao seu lado. Quero viver com você, quero viajar com você, quero morar com você, quero envelhecer com você e poder estar do seu lado até o meu último suspiro de vida.</p>
+    </div>
+    <div class="text-section">
+      <p>Eu quero poder dormir todos os dias ao seu lado:</p>
+    </div>
+    <div class="photo-section">
+      <img src="Fotos/Imagem do WhatsApp de 2025-01-10 à(s) 19.12.47_a0d0a97a.jpg" alt="Primeira Foto">
+    </div>
+    <div class="text-section">
+      <p>Eu quero poder viajar todo os fim de semanas com você:</p>
+    </div>
+    <div class="photo-section">
+      <img src="Fotos/Imagem do WhatsApp de 2025-01-10 à(s) 19.14.35_31b0b905.jpg" alt="Primeira Foto">
+    </div>
+    <div class="text-section">
+      <p>Eu só quero viver momentos, nem que seja só por ter sua presença, só por ter você perto. Eu quero estar com você, quero te amar, te tocar, quero te cheirar, te sentir perto de mim, porque você me faz completo. Você me faz feliz, e isso é a verdade: você me faz o homem mais feliz de todo o mundo, e sempre vai fazer</p>
+    </div>
+    <div class="text-section">
+      <p>E mais algumas coisas que quero viver com você... clica ai vai na caixa preta...</p>
+    </div>
+
+    <!-- Caixa Misteriosa -->
+    <div class="mysterious-box" onclick="revealText()">
+      <div class="censored-text">
+      </div>
+      <div class="revealed-text">Você sabe bem oque é ne?... E quero gravar tambem de preferencia...</div>
+    </div>
+
+    <!-- Contêiner para o botão "Próxima Página" -->
+    <div class="next-button-container">
+      <a class="next-button" href="pagina4.html">Próxima Página</a>
+    </div>
+  </div>
+
+  <script>
+    function revealText() {
+      var box = document.querySelector('.mysterious-box');
+      box.classList.toggle('revealed');
+    }
+  </script>
+
+</body>
+</html>
