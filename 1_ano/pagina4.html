@@ -1,161 +1,204 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surpresa para Você</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #72ca95;
-            color: #2E2E2E;
-            text-align: center;
-            padding: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Imagens</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #72ca95;
+      text-align: center;
+      padding: 20px;
+      color: #2E2E2E;
+    }
 
-        .container {
-            margin-top: 50px;
-        }
+    .container {
+      margin-top: 50px;
+    }
 
-        .question {
-            margin-top: 30px;
-        }
+    .quiz-container {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .question h1 {
-            font-size: 28px;
-            color: #333;
-        }
+    .question {
+      font-size: 1.4em;
+      margin-bottom: 20px;
+    }
 
-        .options a {
-            padding: 15px 40px;
-            background-color: #FF6F61;
-            border-radius: 5px;
-            color: #fff;
-            font-size: 20px;
-            text-decoration: none;
-            margin-top: 20px;
-        }
+    .images {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
 
-        .options a:hover {
-            background-color: #E65A50;
-        }
+    .images img {
+      width: 150px;
+      height: 150px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: 3px solid #D2B48C;
+      transition: transform 0.3s, border-color 0.3s;
+    }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.5);
-            text-align: center;
-        }
+    .images img:hover {
+      transform: scale(1.1);
+      border-color: #C3A375;
+    }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-        }
+    .quiz-button {
+      padding: 15px 30px;
+      font-size: 16px;
+      background-color: #FF6F61;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+      transition: background-color 0.3s;
+    }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    .quiz-button:hover {
+      background-color: #E65A50;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
+    .result {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #FF6F61;
+      margin-top: 20px;
+    }
 
-        .modal-buttons button {
-            padding: 10px 20px;
-            margin: 10px;
-            font-size: 18px;
-        }
-    </style>
+    .next-button {
+      margin-top: 20px;
+      padding: 15px 40px;
+      background-color: #FF6F61;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .next-button:hover {
+      background-color: #E65A50;
+    }
+    .next-button-container {
+      margin-top: 20px;
+      text-align: center; /* Centralizando o botão */
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="question">
-            <h1>Amor, saiba que eu não esqueci do que você está me devendo...</h1>
-            <div class="options">
-                <a href="#" id="sim-btn">O que, amor?</a>
-            </div>
-        </div>
+  <div class="container">
+    <h1>Quiz sobre a gente!</h1>
+    <div class="quiz-container">
+      <p class="question" id="question">Aqui vai a frase da primeira pergunta.</p>
+      <div class="images" id="image-options">
+        <img id="option1" src="image1.jpg" alt="Opção 1">
+        <img id="option2" src="image2.jpg" alt="Opção 2">
+      </div>
+      <div class="buttons hidden" id="button-options">
+        <button id="btnOption1" class="quiz-button">Opção 1</button>
+        <button id="btnOption2" class="quiz-button">Opção 2</button>
+      </div>
+      <p class="result hidden" id="result"></p>
+      <button id="next" class="next-button hidden">Próxima Pergunta</button>
     </div>
+  </div>
 
-    <!-- Modal - Tem certeza? -->
-    <div id="modalTemCerteza" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Tem certeza que não lembra?</h2>
-            <div class="modal-buttons">
-                <button id="sim-certeza-btn">Sim</button>
-            </div>
-        </div>
+  <script>
+    const quizData = [
+      { question: "Primeira pergunta muito simples: Quem tomou a primeira iniciativa?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 0, feedbackCorrect: "Parabéns! Essa tava facil demais, obvio que fui eu!", feedbackWrong: "Ta de sacanagem ne? quem foi que chamou quem????" },
+      { question: "Segunda pergunta mais simples ainda: Quem é o mais preguiçoso(a)?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 1, feedbackCorrect:"So goza e dorme impressionante" , feedbackWrong: "Porra amor essa eu não tenho nem palavras..." },
+      { question: "Terceira pergunta: Quem é mais carinhoso(a)?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 0, feedbackCorrect: "Parabéns! Assumir isso deve ter sido muito dificil", feedbackWrong: "Amor, você me agride..." },
+      { question: "Quarta pergunta: Quem peida mais?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 1, feedbackCorrect: "Mds que nojo, subiu o cheiro aqui ja, ovo podre....", feedbackWrong: "Essa eu aceito que era dificil de responder, vamos continuar." },
+      { question: "Quinta pergunta: Quem é mais ciumento(a)?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 1, feedbackCorrect: "Correto, você é muito mais surtada", feedbackWrong: "EUUUUUUUUU?????? EU NUNCA SENTI CIUMES NA VIDA....... Deve ser algum dos seus contatinhos...." },
+      { question: "Sexta pergunta: Quem foi que pediu em namoro?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 0, feedbackCorrect: "Ate pq eu amo mais ne impressionante", feedbackWrong: "Se respondeu errado de sacanagem so pode" },
+      { question: "Sétima pergunta: Quem disse eu te amo primeiro?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 0, feedbackCorrect: "Obvio que fui eu, sou emocionado.", feedbackWrong: "Você não me amava o suficiente." },
+      { question: "Oitava pergunta: Você me ama mesmo?", options: ["Sim", "Não"], correct: 0, feedbackCorrect: "Tem certeza disso?", feedbackWrong: "vou me m..." },
+      { question: "Nona pergunta: Sabe eu te amo mais que tudo nessa vida, será que você também pensa assim?", options: ["Não, eu te odeio", "Obvio meu amor"], correct: 1, feedbackCorrect: "Então eu sou o homem mais feliz do mundo.", feedbackWrong: "eu realmente vou me m...." },
+      { question: "Décima e última pergunta: Quem é que ama mais?", options: ["Quiz/Eu.jpg", "Quiz/Nic.jpg"], correct: 0, feedbackCorrect: "Parabéns! Você acertou a pergunta mais importante. Eu te amo mais", feedbackWrong: "Refaz agora." }
+    ];
+
+    let currentQuestion = 0;
+
+    const questionEl = document.getElementById("question");
+    const option1El = document.getElementById("option1");
+    const option2El = document.getElementById("option2");
+    const btnOption1El = document.getElementById("btnOption1");
+    const btnOption2El = document.getElementById("btnOption2");
+    const imageOptionsEl = document.getElementById("image-options");
+    const buttonOptionsEl = document.getElementById("button-options");
+    const resultEl = document.getElementById("result");
+    const nextButton = document.getElementById("next");
+
+    function loadQuestion() {
+      const currentData = quizData[currentQuestion];
+      questionEl.textContent = currentData.question;
+
+      if (currentQuestion === 7 || currentQuestion === 8) {
+        imageOptionsEl.classList.add("hidden");
+        buttonOptionsEl.classList.remove("hidden");
+        btnOption1El.textContent = currentData.options[0];
+        btnOption2El.textContent = currentData.options[1];
+      } else {
+        imageOptionsEl.classList.remove("hidden");
+        buttonOptionsEl.classList.add("hidden");
+        option1El.src = currentData.options[0];
+        option2El.src = currentData.options[1];
+      }
+
+      resultEl.classList.add("hidden");
+      nextButton.classList.add("hidden");
+    }
+
+    function showResult(isCorrect) {
+      const currentData = quizData[currentQuestion];
+      resultEl.textContent = isCorrect
+        ? `Correto! ${currentData.feedbackCorrect}`
+        : `Errado! ${currentData.feedbackWrong}`;
+      resultEl.style.color = isCorrect ? "#72ca95" : "#FF6F61";
+      resultEl.classList.remove("hidden");
+      nextButton.classList.remove("hidden");
+    }
+
+    function handleAnswer(selected) {
+      const isCorrect = selected === quizData[currentQuestion].correct;
+      showResult(isCorrect);
+    }
+
+    option1El.addEventListener("click", () => handleAnswer(0));
+    option2El.addEventListener("click", () => handleAnswer(1));
+    btnOption1El.addEventListener("click", () => handleAnswer(0));
+    btnOption2El.addEventListener("click", () => handleAnswer(1));
+
+    nextButton.addEventListener("click", () => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        questionEl.textContent = "Parabéns! Você completou o quiz!";s
+        imageOptionsEl.classList.add("hidden");
+        buttonOptionsEl.classList.add("hidden");
+        resultEl.classList.add("hidden");
+        nextButton.classList.add("hidden");
+      }
+    });
+
+    loadQuestion();
+  </script>
+    <div class="next-button-container">
+        <a class="next-button" href="pagina5.html">Próxima Página</a>
     </div>
-
-    <!-- Modal - Sim -->
-    <div id="modalSim" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>E o cuzinho?</h2>
-            <p>Vai liberar quando?</p>
-        </div>
-    </div>
-
-    <script>
-        // Função para fechar todos os modais
-        function closeModal() {
-            var modals = document.getElementsByClassName('modal');
-            for (var i = 0; i < modals.length; i++) {
-                modals[i].style.display = "none";
-            }
-        }
-
-        // Função para abrir qualquer modal
-        function openModal(modalId) {
-            closeModal(); // Fecha todos os modais abertos antes de abrir um novo
-            var modal = document.getElementById(modalId);
-            modal.style.display = "block";
-        }
-
-        // Fecha o modal quando o usuário clica no botão "Fechar" ou fora do modal
-        var closeButtons = document.getElementsByClassName('close');
-        for (var i = 0; i < closeButtons.length; i++) {
-            closeButtons[i].addEventListener('click', function() {
-                closeModal(); // Chama a função para fechar todos os modais
-            });
-        }
-
-        // Fecha todos os modais quando o usuário clica fora do conteúdo do modal
-        window.addEventListener('click', function(event) {
-            var modals = document.getElementsByClassName('modal');
-            for (var i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    closeModal(); // Chama a função para fechar todos os modais
-                }
-            }
-        });
-
-        // Adiciona evento ao botão "O que, amor?" para abrir o modal "Tem certeza?"
-        document.getElementById('sim-btn').addEventListener('click', function(event) {
-            openModal('modalTemCerteza');
-        });
-
-        // Adiciona evento ao botão "Sim" do modal "Tem certeza?" para abrir o modal "Sim"
-        document.getElementById('sim-certeza-btn').addEventListener('click', function(event) {
-            openModal('modalSim');
-        });
-    </script>
 </body>
 </html>
