@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nosso Amor ❤️</title>
+  <style>
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      padding: 40px;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      color: #ff4d4d;
+      margin-top: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    button {
+      background-color: #ff4d4d;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
+    }
+
+    button:hover {
+      background-color: #cc0000;
+    }
+
+    img {
+      width: 50%;
+      border-radius: 10px;
+      margin-top: 25px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+    iframe {
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    #mensagem {
+      display: none;
+      margin-top: 30px;
+      font-size: 20px;
+      color: #FFD700;
+    }
+
+    /* Corações caindo */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <p>Oie, diferente né? haha</p>
+
+  <h2>Nossa música: "Amar Você" 🎶</h2>
+  <iframe width="560" height="315"
+    src="https://www.youtube.com/embed/YDzfuSrdfo8"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+  <h1>Bem-vindo à nossa página, meu amor!</h1>
+  <p>Essa é minha primeira página em HTML, e quis fazer isso só pra mostrar o quanto você é especial pra mim. 💌</p>
+
+  <img src="https://lumiere-a.akamaihd.net/v1/images/stitch_16x9_9ac13651.png?region=0,0,1152,648&width=960" alt="Stitch fofo">
+
+  <br><br>
+  <button onclick="mostrarMensagem()">Clique aqui para uma surpresinha 💌</button>
+  <p id="mensagem">Você é meu presente mais bonito, meu refúgio e meu amor! Te amo muito. ❤️</p>
+
+  <!-- Corações caindo -->
+  <script>
+    function mostrarMensagem() {
+      document.getElementById("mensagem").style.display = "block";
+    }
+
+    // Corações caindo
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.innerText = "❤️";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }, 300);
+  </script>
+</body>
+</html>

@@ -3,21 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A nossa historia</title>
+  <title>A nossa história</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #47b1df;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: 'Georgia', serif;
       text-align: center;
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #ff4d4d;
+      margin-top: 20px;
     }
 
     .container {
       margin-top: 50px;
     }
-    .button-container {
-      margin-top: 20px;
-    }
+
     .photo-section {
       display: flex;
       justify-content: center;
@@ -30,6 +35,11 @@
       height: auto;
       border-radius: 10px;
       border: 3px solid #D2B48C;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .button-container {
+      margin-top: 30px;
     }
 
     .button-container a {
@@ -38,27 +48,86 @@
       padding: 15px 30px;
       margin: 10px;
       font-size: 18px;
-      color: #fff;
-      background-color: #f4a261 ;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      color: #ffffff;
+      background-color: #ff4d4d;
+      border-radius: 30px;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
     }
 
     .button-container a:hover {
-      background-color: #f4a261 ;
+      background-color: #cc0000;
+    }
+
+    /* Espaço para música */
+    .music-section {
+      margin-top: 40px;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 560px;
+      height: 315px;
+      border-radius: 10px;
+      margin-top: 20px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Corações caindo */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Para que jamais esqueçamos nossa história.</h1>
+
     <div class="photo-section">
       <img src="Imagem do WhatsApp de 2025-01-10 à(s) 20.13.40_9caa882b.jpg" alt="Primeira Foto">
     </div>
+
     <div class="button-container">
-      <a href="dia_dos_namorados\index.html">Dia dos Namorados</a>
-      <a href="1_ano\pagina1.html">1 Ano de Namoro</a>
+      <a href="dia_dos_namorados/index.html">Dia dos Namorados 2024</a>
+      <a href="1_ano/pagina1.html">1 Ano de Namoro</a>
+      <a href="dia_dos_namorados_2025/index.html">Dia dos Namorados 2025</a>
+    </div>
+
+    <div class="music-section">
+      <h2>Nossa música 🎶</h2>
+      <!-- Substitua o src abaixo pelo link da sua música -->
+      <iframe src="https://www.youtube.com/watch?v=iTWYa0t5COk" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
     </div>
   </div>
+
+  <!-- Corações caindo -->
+  <script>
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.innerText = "❤️";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }, 300);
+  </script>
 </body>
 </html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surpresa para Você</title>
+  <style>
+    body {
+      background-color: #e6e6fa; /* lavanda suave */
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #624CAB;
+    }
+
+    .text-section p {
+      margin-bottom: 20px;
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .photos img {
+      width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .next-button {
+      display: inline-block;
+      background-color: #624CAB;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 30px;
+      transition: background 0.3s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    .next-button:hover {
+      background-color: #3b2166;
+    }
+
+    /* Corações caindo */
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 24px;
+      animation: fall linear infinite;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Embed YouTube invisível */
+    .video-bg {
+      position: fixed;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- Música de fundo via YouTube -->
+  <div class="video-bg">
+    <iframe src="https://www.youtube.com/watch?v=tgVYh94QH8k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <div class="container">
+    <h1>Eu sei que já falei isso demais, mas eu nunca canso: eu te amo demais ❤️</h1>
+
+    <div class="text-section">
+      <p>Eu sei que já foi muito texto, e sei que não sou bom escrevendo, mas esse sentimento é tão puro, especial, mágico e único que acaba virando um clichê de filme de romance.</p>
+      <p>Quero que você saiba que tudo aqui, como sempre digo, é único, é nosso — isso é o que mais importa. É o que faz tudo valer a pena, o que me faz querer viver com você todos os dias da minha vida. É o que me faz acordar e ver o seu sorriso, te abraçar e sentir seu cheiro, amar você e tentar te fazer feliz.</p>
+      <p>Quero relembrar nossos momentos e a nossa história desde o último Dia dos Namorados. Então aqui vai a coletânea!</p>
+    </div>
+
+    <div class="photos">
+      <img src="Fotos/WhatsApp Image Jun 9 2025 (6).jpeg" alt="Primeira Foto">
+      <img src="Fotos/WhatsApp Image Jun 9 2025 (7).jpeg" alt="Segunda Foto">
+    </div>
+
+    <a class="next-button" href="pagina3.html">Próxima Página</a>
+  </div>
+
+  <!-- Script de corações caindo -->
+  <script>
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.innerText = '💗';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+  </script>
+</body>
+</html>

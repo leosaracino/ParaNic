@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surpresa para Você</title>
+  <style>
+    body {
+      background-color: #b3e5fc; /* azul bebê claro */
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #0277bd;
+    }
+
+    .options {
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #0288d1;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 10px;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #01579b;
+    }
+
+    .photos {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .photos img {
+      width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close {
+      color: #aaa;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #000;
+    }
+
+    #modal-img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Meu amor, eu vou ter que fazer essa pergunta novamente, todos os dias, ate eu morrer e você precisa responder! Você está pronta pra viver sua vida comigo?</h1>
+    <div class="options">
+      <a href="pagina2.html" class="btn" id="sim-btn">Sim</a>
+      <a class="btn" id="nao-btn">Não</a>
+    </div>
+    <div class="photos">
+      <img src="fotos/WhatsApp Image Jun 9 2025 (5).jpeg" alt="Foto 4">
+      <img src="fotos/WhatsApp Image Jun 9 2025 (8).jpeg" alt="Foto 2">
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Eu já te disse: vai viver comigo sim, querendo ou não! Te amo 🔪❤️</p>
+      <img id="modal-img" src="fotos/WhatsApp Image Jun 9 2025 (9).jpeg" alt="Imagem surpresa">
+    </div>
+  </div>
+
+  <script>
+    function openModal(src) {
+      const modal = document.getElementById('myModal');
+      const modalImg = document.getElementById('modal-img');
+      modal.style.display = 'block';
+      modalImg.src = src;
+    }
+
+    document.querySelector('.close').addEventListener('click', () => {
+      document.getElementById('myModal').style.display = 'none';
+    });
+
+    document.getElementById('nao-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('nao-btn').remove();
+      openModal('fotos/foto5.jpg');
+    });
+
+    // Sim redireciona automaticamente (opcional)
+    document.getElementById('sim-btn').addEventListener('click', () => {
+      // window.location.href = 'pagina2.html';
+    });
+  </script>
+</body>
+</html>
