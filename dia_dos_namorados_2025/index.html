@@ -55,6 +55,7 @@
       width: 45%;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
 
     /* Modal */
@@ -72,7 +73,7 @@
 
     .modal-content {
       background-color: #fefefe;
-      margin: 15% auto;
+      margin: 10% auto;
       padding: 20px;
       border-radius: 10px;
       width: 80%;
@@ -104,14 +105,17 @@
 </head>
 <body>
   <div class="container">
-    <h1>Meu amor, eu vou ter que fazer essa pergunta novamente, todos os dias, ate eu morrer e você precisa responder! Você está pronta pra viver sua vida comigo?</h1>
+    <h1>
+      Meu amor, eu vou ter que fazer essa pergunta novamente, todos os dias,
+      até eu morrer e você precisa responder! Você está pronta pra viver sua vida comigo?
+    </h1>
     <div class="options">
       <a href="pagina2.html" class="btn" id="sim-btn">Sim</a>
       <a class="btn" id="nao-btn">Não</a>
     </div>
     <div class="photos">
-      <img src="fotos/WhatsApp Image Jun 9 2025 (5).jpeg" alt="Foto 4">
-      <img src="fotos/WhatsApp Image Jun 9 2025 (8).jpeg" alt="Foto 2">
+      <img src="fotos/WhatsApp Image Jun 9 2025 (5).jpeg" alt="Foto 4" class="thumb">
+      <img src="fotos/WhatsApp Image Jun 9 2025 (8).jpeg" alt="Foto 2" class="thumb">
     </div>
   </div>
 
@@ -120,7 +124,7 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <p>Eu já te disse: vai viver comigo sim, querendo ou não! Te amo 🔪❤️</p>
-      <img id="modal-img" src="fotos/WhatsApp Image Jun 9 2025 (9).jpeg" alt="Imagem surpresa">
+      <img id="modal-img" alt="Imagem surpresa">
     </div>
   </div>
 
@@ -128,22 +132,31 @@
     function openModal(src) {
       const modal = document.getElementById('myModal');
       const modalImg = document.getElementById('modal-img');
-      modal.style.display = 'block';
       modalImg.src = src;
+      modal.style.display = 'block';
     }
 
+    // fecha o modal
     document.querySelector('.close').addEventListener('click', () => {
       document.getElementById('myModal').style.display = 'none';
     });
 
+    // click em "Não" abre surpresa.jpg
     document.getElementById('nao-btn').addEventListener('click', (e) => {
       e.preventDefault();
-      document.getElementById('nao-btn').remove();
-      openModal('fotos/foto5.jpg');
+      // opcional: esconder o botão "Não"
+      document.getElementById('nao-btn').style.display = 'none';
+      openModal('fotos/surpresa.jpg');
     });
 
-    // Sim redireciona automaticamente (opcional)
-    document.getElementById('sim-btn').addEventListener('click', () => {
+    // clicar nas miniaturas abre modal com a própria imagem
+    document.querySelectorAll('.thumb').forEach(img => {
+      img.addEventListener('click', () => openModal(img.src));
+    });
+
+    // se quiser que o "Sim" redirecione automaticamente
+    document.getElementById('sim-btn').addEventListener('click', (e) => {
+      // descomente a linha abaixo para ativar redirecionamento:
       // window.location.href = 'pagina2.html';
     });
   </script>
