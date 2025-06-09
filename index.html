@@ -64,6 +64,11 @@
       margin-top: 40px;
     }
 
+    .music-section h2 {
+      margin-bottom: 10px;
+      color: #ff4d4d;
+    }
+
     iframe {
       width: 100%;
       max-width: 560px;
@@ -84,12 +89,8 @@
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(-50px) rotate(0deg);
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-      }
+      0% { transform: translateY(-50px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
     }
   </style>
 </head>
@@ -109,8 +110,14 @@
 
     <div class="music-section">
       <h2>Nossa música 🎶</h2>
-      <!-- Substitua o src abaixo pelo link da sua música -->
-      <iframe src="https://www.youtube.com/watch?v=iTWYa0t5COk" title="YouTube video player" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+      <!-- Embed correto usando /embed/VIDEO_ID -->
+      <iframe
+        src="https://www.youtube.com/embed/iTWYa0t5COk?autoplay=1&mute=1&loop=1&playlist=iTWYa0t5COk"
+        title="YouTube video player"
+        frameborder="0"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 
@@ -123,10 +130,7 @@
       heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
       heart.innerText = "❤️";
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+      setTimeout(() => heart.remove(), 5000);
     }, 300);
   </script>
 </body>

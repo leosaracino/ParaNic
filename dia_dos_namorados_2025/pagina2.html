@@ -38,10 +38,12 @@
       gap: 20px;
     }
 
+    /* MINIATURAS (sem id, só classe) */
     .photos img {
       width: 45%;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      cursor: pointer;
     }
 
     .next-button {
@@ -62,6 +64,42 @@
       background-color: #3b2166;
     }
 
+    /* ===== MODAL (mesma de antes) ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      overflow: auto;
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%; max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 28px;
+      color: #aaa;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover { color: #000; }
+
+    /* Imagem do modal */
+    #modal-img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 15px;
+    }
+
     /* Corações caindo */
     .heart {
       position: fixed;
@@ -71,7 +109,6 @@
       z-index: 0;
       opacity: 0.8;
     }
-
     @keyframes fall {
       0% { transform: translateY(-50px) rotate(0deg); }
       100% { transform: translateY(100vh) rotate(360deg); }
@@ -80,8 +117,7 @@
     /* Embed YouTube invisível */
     .video-bg {
       position: fixed;
-      width: 0;
-      height: 0;
+      width: 0; height: 0;
       overflow: hidden;
     }
   </style>
@@ -89,7 +125,9 @@
 <body>
   <!-- Música de fundo via YouTube -->
   <div class="video-bg">
-    <iframe src="https://www.youtube.com/watch?v=tgVYh94QH8k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/watch?v=tgVYh94QH8k"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
   </div>
 
   <div class="container">
@@ -102,15 +140,43 @@
     </div>
 
     <div class="photos">
-      <img src="Fotos/WhatsApp Image Jun 9 2025 (6).jpeg" alt="Primeira Foto">
-      <img src="Fotos/WhatsApp Image Jun 9 2025 (7).jpeg" alt="Segunda Foto">
+      <!-- sem id, usando só a classe "thumb" -->
+      <img src="Fotos/WhatsApp Image Jun 9 2025 (6).jpeg" alt="Primeira Foto" class="thumb">
+      <img src="Fotos/WhatsApp Image Jun 9 2025 (7).jpeg" alt="Segunda Foto" class="thumb">
     </div>
 
     <a class="next-button" href="pagina3.html">Próxima Página</a>
   </div>
 
-  <!-- Script de corações caindo -->
+  <!-- Modal comum a todas as páginas -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Eu já te disse: vai viver comigo sim, querendo ou não! Te amo 🔪❤️</p>
+      <!-- Único elemento com este id -->
+      <img id="modal-img" alt="Imagem surpresa">
+    </div>
+  </div>
+
   <script>
+    function openModal(src) {
+      const modal   = document.getElementById('myModal');
+      const modalImg= document.getElementById('modal-img');
+      modalImg.src  = src;
+      modal.style.display = 'block';
+    }
+
+    // Fecha o modal
+    document.querySelector('.close').addEventListener('click', () => {
+      document.getElementById('myModal').style.display = 'none';
+    });
+
+    // Toda miniatura com classe .thumb abre o modal com sua própria src
+    document.querySelectorAll('.thumb').forEach(img => {
+      img.addEventListener('click', () => openModal(img.src));
+    });
+
+    // Script de corações caindo
     setInterval(() => {
       const heart = document.createElement('div');
       heart.classList.add('heart');
