@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Surpresa para Você</title>
   <style>
     body {
       background-color: #e6e6fa; /* lavanda suave */
       color: #333;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
       overflow-x: hidden;
@@ -38,11 +38,10 @@
       gap: 20px;
     }
 
-    /* MINIATURAS (sem id, só classe) */
     .photos img {
       width: 45%;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       cursor: pointer;
     }
 
@@ -56,48 +55,9 @@
       font-size: 16px;
       margin-top: 30px;
       transition: background 0.3s ease;
-      position: relative;
-      z-index: 10;
     }
-
     .next-button:hover {
       background-color: #3b2166;
-    }
-
-    /* ===== MODAL (mesma de antes) ===== */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      overflow: auto;
-    }
-    .modal-content {
-      background-color: #fefefe;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 80%; max-width: 500px;
-      text-align: center;
-      position: relative;
-    }
-    .close {
-      position: absolute;
-      top: 10px; right: 15px;
-      font-size: 28px;
-      color: #aaa;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .close:hover { color: #000; }
-
-    /* Imagem do modal */
-    #modal-img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 15px;
     }
 
     /* Corações caindo */
@@ -117,7 +77,8 @@
     /* Embed YouTube invisível */
     .video-bg {
       position: fixed;
-      width: 0; height: 0;
+      width: 0;
+      height: 0;
       overflow: hidden;
     }
   </style>
@@ -125,64 +86,52 @@
 <body>
   <!-- Música de fundo via YouTube -->
   <div class="video-bg">
-    <iframe src="https://www.youtube.com/watch?v=tgVYh94QH8k"
-            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe>
+    <iframe
+      src="https://www.youtube.com/watch?v=tgVYh94QH8k"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
   </div>
 
   <div class="container">
     <h1>Eu sei que já falei isso demais, mas eu nunca canso: eu te amo demais ❤️</h1>
 
     <div class="text-section">
-      <p>Eu sei que já foi muito texto, e sei que não sou bom escrevendo, mas esse sentimento é tão puro, especial, mágico e único que acaba virando um clichê de filme de romance.</p>
-      <p>Quero que você saiba que tudo aqui, como sempre digo, é único, é nosso — isso é o que mais importa. É o que faz tudo valer a pena, o que me faz querer viver com você todos os dias da minha vida. É o que me faz acordar e ver o seu sorriso, te abraçar e sentir seu cheiro, amar você e tentar te fazer feliz.</p>
-      <p>Quero relembrar nossos momentos e a nossa história desde o último Dia dos Namorados. Então aqui vai a coletânea!</p>
+      <p>
+        Eu sei que já foi muito texto, e sei que não sou bom escrevendo, mas
+        esse sentimento é tão puro, especial, mágico e único que acaba virando
+        um clichê de filme de romance.
+      </p>
+      <p>
+        Quero que você saiba que tudo aqui, como sempre digo, é único, é
+        nosso — isso é o que mais importa. É o que faz tudo valer a pena, o
+        que me faz querer viver com você todos os dias da minha vida. É o que
+        me faz acordar e ver o seu sorriso, te abraçar e sentir seu cheiro,
+        amar você e tentar te fazer feliz.
+      </p>
+      <p>
+        Quero relembrar nossos momentos e a nossa história desde o último Dia
+        dos Namorados. Então aqui vai a coletânea!
+      </p>
     </div>
 
     <div class="photos">
-      <!-- sem id, usando só a classe "thumb" -->
-      <img src="Fotos/WhatsApp Image Jun 9 2025 (6).jpeg" alt="Primeira Foto" class="thumb">
-      <img src="Fotos/WhatsApp Image Jun 9 2025 (7).jpeg" alt="Segunda Foto" class="thumb">
+      <img src="Fotos/foto1.jpeg" alt="Primeira Foto" />
+      <img src="Fotos/foto2.jpeg" alt="Segunda Foto" />
     </div>
 
     <a class="next-button" href="pagina3.html">Próxima Página</a>
   </div>
 
-  <!-- Modal comum a todas as páginas -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Eu já te disse: vai viver comigo sim, querendo ou não! Te amo 🔪❤️</p>
-      <!-- Único elemento com este id -->
-      <img id="modal-img" alt="Imagem surpresa">
-    </div>
-  </div>
-
   <script>
-    function openModal(src) {
-      const modal   = document.getElementById('myModal');
-      const modalImg= document.getElementById('modal-img');
-      modalImg.src  = src;
-      modal.style.display = 'block';
-    }
-
-    // Fecha o modal
-    document.querySelector('.close').addEventListener('click', () => {
-      document.getElementById('myModal').style.display = 'none';
-    });
-
-    // Toda miniatura com classe .thumb abre o modal com sua própria src
-    document.querySelectorAll('.thumb').forEach(img => {
-      img.addEventListener('click', () => openModal(img.src));
-    });
-
     // Script de corações caindo
     setInterval(() => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      heart.innerText = '💗';
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+      heart.innerText = "💗";
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
     }, 300);
